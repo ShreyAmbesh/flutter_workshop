@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_workshop/HomePage.dart';
 
 void main() {
   runApp(FirstApp());
@@ -27,12 +28,12 @@ class FirstApp extends StatelessWidget {
                 ),
                 TextField(
                     decoration: InputDecoration(
-                      labelText: 'User Name',
-                      hintText: 'Enter Your user name',
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                          borderSide: BorderSide()),
-                    )),
+                  labelText: 'User Name',
+                  hintText: 'Enter Your user name',
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                      borderSide: BorderSide()),
+                )),
                 TextField(
                     obscureText: true,
                     decoration: InputDecoration(
@@ -41,11 +42,20 @@ class FirstApp extends StatelessWidget {
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20),
                             borderSide: BorderSide()))),
-                RaisedButton(
-                  child: Text('LOGIN'),
-                  onPressed: whenClicked,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15)),
+                Builder(
+                  builder: (ctx){
+                    return RaisedButton(
+                      child: Text('LOGIN'),
+                      onPressed: () {
+                        Navigator.of(ctx)
+                            .push(MaterialPageRoute(builder: (context) {
+                          return HomePage();
+                        }));
+                      },
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15)),
+                    );
+                  }
                 )
               ],
             ),
@@ -54,6 +64,4 @@ class FirstApp extends StatelessWidget {
       ),
     );
   }
-
-  void whenClicked() {}
 }
